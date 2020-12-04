@@ -15,11 +15,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix' => 'admin'], function () {
-    Route::get('/', 'Admin\HouseholdaccountbookController@index');
-    Route::get('householdaccountbook/create', 'Admin\HouseholdaccountbookController@add');
-    Route::post('householdaccountbook/create', 'Admin\HouseholdaccountbookController@create');
-    Route::get('householdaccountbook/edit', 'Admin\Householda ccountbookController@edit');
-    Route::post('householdaccountbook/edit', 'Admin\HouseholdaccountbookController@update');
-    Route::get('householdaccountbook/delete', 'Admin\HouseholdaccountbookController@delete');
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+    Route::group(['prefix' => 'household_account_book'], function () {
+        Route::get('/', 'Admin\HouseholdAccountBookController@index');
+        Route::get('/create', 'Admin\HouseholdAccountBookController@add');
+        Route::post('/create', 'Admin\HouseholdAccountBookController@create');
+        Route::get('/edit', 'Admin\HouseholdAccountBookController@edit');
+        Route::post('/edit', 'Admin\HouseholdAccountBookController@update');
+        Route::get('/delete', 'Admin\HouseholdAccountBookController@delete');
+        Route::get('/showChart', 'Admin\HouseholdAccountBookController@showChart');
+    });
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

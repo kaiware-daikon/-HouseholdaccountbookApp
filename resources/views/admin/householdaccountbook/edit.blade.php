@@ -1,15 +1,15 @@
 @extends('layouts.admin')
 
-@section('title', '支出の登録')
+@section('title', '支出データの編集')
 
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-8 mx-auto">
-                <h2>支出の登録</h2>
+                <h2>支出データの編集</h2>
             </div>
         </div>
-        <form action="{{ action('Admin\HouseholdAccountBookController@create') }}" method="post">
+        <form action="{{ action('Admin\HouseholdAccountBookController@update',['id' => $householdaccountbook->id]) }}" method="post">
             @if (count($errors) > 0)
             <ul>
                 @foreach($errors->all() as $e)
@@ -20,7 +20,7 @@
             <div class="row">
                 <div class="col">
                     <label class="label">支払日</label>
-                <input type="date" class="form-control" name="payment_date">
+                <input type="date" class="form-control" name="payment_date" max="{{ date('Y-m-d')}}" value="{{ $householdaccountbook->payment_date->format('Y-m-d') }}">
                 </div>
                 <div class="col">
                     <label class="label">項目</label>
@@ -47,22 +47,22 @@
                 </div>
                 <div class="col">
                     <label class="label">商品名</label>
-                    <input type="text" class="form-control" name="name" placeholder="商品名" value="{{ old('name') }}">
+                <input type="text" class="form-control" name="name" value="{{ $householdaccountbook->name }}">
                 </div>
                 <div class="col">
                     <label class="label">数量</label>
-                    <input type="number" class="form-control" name="num" placeholder="数量" min=1 value="{{ old('num') }}">
+                <input type="number" class="form-control" name="num" min=1 value="{{ $householdaccountbook->num }}">
                 </div>
                 <div class="col">
                     <label class="label">単価</label>
-                    <input type="text" class="form-control" name="unit_price" placeholder="単価" value="{{ old('unit_price') }}">
+                <input type="text" class="form-control" name="unit_price" value="{{ $householdaccountbook->unit_price }}">
                 </div>
                 {{ csrf_field() }}
                 <div class="col">
-                    <input type="submit" class="btn btn-info" value="登録">
+                    <input type="submit" class="btn btn-info" value="更新">
                 </div>
                 <div class="col">
-                <p><a href="{{ action('Admin\HouseholdAccountBookController@index') }}">一覧へ</a></p>
+                <p><a href="{{ action('Admin\HouseholdAccountBookController@index') }}">一覧に戻る</a></p>
                 </div>
             </div>
         </form>

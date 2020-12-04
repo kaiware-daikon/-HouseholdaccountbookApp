@@ -1,40 +1,86 @@
 body {
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: #000;
-  color: #fff;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #fff;
+    color: #17a2b8;
 }
 
 .navbar-laravel {
-  background-color: #000;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
 .navbar-brand {
-  color: #fff !important;
+    color: #fff !important;
 }
 
 .nav-link {
-  color: #fff !important;
+    color: #fff !important;
 }
 
 .table-dark {
-  color: #fff;
-}
-
-.list-group-item {
-  border-color: #fff;
-  background-color: #000;
+    color: #fff;
 }
 
 .login-box {
-  background-color: rgba(0, 0, 0, 0);
+    background-color: #17a2b8(0, 0, 0, 0);
 }
 
 .login-header {
-  background-color: rgba(0, 0, 0, 0.25);
+    background-color: #17a2b8(0, 0, 0, 0.25);
 }
 
 .login-body {
-  background-color: rgba(0, 0, 0, 0.25);
+    background-color: #17a2b8(0, 0, 0, 0.25);
+}
+
+.label {
+    background-color: #17a2b8(0, 0, 0, 0.25);
+}
+
+.form-group {
+    color: #17a2b8;
+}
+
+.unit_price {
+    text-align: right;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.card {
+    text-align: right;
+    margin-left: 80%;
+    margin-bottom: 24px;
+    color: #fff;
+}
+
+.card li {
+    color: #111;
+}
+
+.card-header {
+    background-color: #17a2b8;
+    opacity: 0.8;
+    text-align: center;
+}
+
+.btn {
+    background-color: #17a2b8;
+    margin-top: 30px;
+    opacity: 0.8;
+    color: #fff;
+}
+
+.table thead th,
+.table th,
+.table td {
+    border: solid 1px 0 #dee2e6;
+}
+
+.chartWrapper {
+    width: 60%;
 }
