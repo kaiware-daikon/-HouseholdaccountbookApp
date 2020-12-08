@@ -24,10 +24,19 @@ class HouseholdAccountBookController extends Controller
 
         unset($form['_token']);
 
-        $householdaccountbook->fill($form);
-        $householdaccountbook->save();
+        if ($request->input('once')) {
+            unset($form['once']);
+            $householdaccountbook->fill($form);
+            $householdaccountbook->save();
 
-        return redirect()->action('Admin\HouseholdAccountBookController@index');
+            return redirect()->action('Admin\HouseholdAccountBookController@index');
+        } elseif ($request->input('continuous')) {
+            unset($form['continuous']);
+            $householdaccountbook->fill($form);
+            $householdaccountbook->save();
+
+            return redirect()->action('Admin\HouseholdAccountBookController@create');
+        }
     }
 
     public function index(Request $request)

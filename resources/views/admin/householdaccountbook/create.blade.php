@@ -11,16 +11,16 @@
         </div>
         <form action="{{ action('Admin\HouseholdAccountBookController@create') }}" method="post">
             @if (count($errors) > 0)
-            <ul>
-                @foreach($errors->all() as $e)
-                    <li>{{ $e }}</li>
-                @endforeach
-            </ul>
+                <ul>
+                    @foreach ($errors->all() as $e)
+                        <li>{{ $e }}</li>
+                    @endforeach
+                </ul>
             @endif
             <div class="row">
                 <div class="col">
                     <label class="label">支払日</label>
-                <input type="date" class="form-control" name="payment_date">
+                    <input type="date" class="form-control" name="payment_date">
                 </div>
                 <div class="col">
                     <label class="label">項目</label>
@@ -55,14 +55,18 @@
                 </div>
                 <div class="col">
                     <label class="label">単価</label>
-                    <input type="text" class="form-control" name="unit_price" placeholder="単価" value="{{ old('unit_price') }}">
+                    <input type="text" class="form-control" name="unit_price" placeholder="単価"
+                        value="{{ old('unit_price') }}">
                 </div>
                 {{ csrf_field() }}
                 <div class="col">
-                    <input type="submit" class="btn btn-info" value="登録">
+                    <input type="submit" class="btn btn-info" name="once" value="登録">
                 </div>
                 <div class="col">
-                <p><a href="{{ action('Admin\HouseholdAccountBookController@index') }}">一覧へ</a></p>
+                    <input type="submit" class="btn btn-info" name="continuous" value="連続登録">
+                </div>
+                <div class="col">
+                    <p><a href="{{ action('Admin\HouseholdAccountBookController@index') }}">一覧へ</a></p>
                 </div>
             </div>
         </form>
