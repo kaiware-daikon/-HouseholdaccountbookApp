@@ -19,22 +19,19 @@ class HouseholdAccountBookController extends Controller
         $this->validate($request, HouseholdAccountBook::$rules);
 
         $householdaccountbook = new HouseholdAccountBook;
+        $register = $request->input('register');
 
         $form = $request->all();
 
         unset($form['_token']);
+        // unset($form['register']);
 
-        if ($request->input('once')) {
-            unset($form['once']);
-            $householdaccountbook->fill($form);
-            $householdaccountbook->save();
+        $householdaccountbook->fill($form);
+        $householdaccountbook->save();
 
+        if ($register === "登録") {
             return redirect()->action('Admin\HouseholdAccountBookController@index');
-        } elseif ($request->input('continuous')) {
-            unset($form['continuous']);
-            $householdaccountbook->fill($form);
-            $householdaccountbook->save();
-
+        } elseif ($register === "連続登録") {
             return redirect()->action('Admin\HouseholdAccountBookController@create');
         }
     }

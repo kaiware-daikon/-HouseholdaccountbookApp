@@ -60,10 +60,10 @@
                 </div>
                 {{ csrf_field() }}
                 <div class="col">
-                    <input type="submit" class="btn btn-info" name="once" value="登録">
+                    <input type="submit" class="btn btn-info" name="register" value="登録">
                 </div>
                 <div class="col">
-                    <input type="submit" class="btn btn-info" name="continuous" value="連続登録">
+                    <input type="submit" class="btn btn-info" name="register" value="連続登録">
                 </div>
                 <div class="col">
                     <p><a href="{{ action('Admin\HouseholdAccountBookController@index') }}">一覧へ</a></p>
