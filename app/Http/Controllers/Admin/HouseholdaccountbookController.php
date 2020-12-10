@@ -24,7 +24,6 @@ class HouseholdAccountBookController extends Controller
         $form = $request->all();
 
         unset($form['_token']);
-        // unset($form['register']);
 
         $householdaccountbook->fill($form);
         $householdaccountbook->save();

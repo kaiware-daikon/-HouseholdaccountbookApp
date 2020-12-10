@@ -19,4 +19,5 @@ class HouseholdAccountBook extends Model
     {
         return $this->unit_price * $this->num;
     }
+
 }
