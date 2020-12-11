@@ -28,11 +28,10 @@ class HouseholdAccountBookController extends Controller
         $householdaccountbook->fill($form);
         $householdaccountbook->save();
 
-        if ($register === "登録") {
-            return redirect()->action('Admin\HouseholdAccountBookController@index');
-        } elseif ($register === "連続登録") {
+        if ($register === "連続登録") {
             return redirect()->action('Admin\HouseholdAccountBookController@create');
         }
+        return redirect()->action('Admin\HouseholdAccountBookController@index');
     }
 
     public function index(Request $request)

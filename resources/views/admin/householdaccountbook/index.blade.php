@@ -93,6 +93,7 @@
                                 <th width="30%">商品名</th>
                                 <th width="10%">数量</th>
                                 <th width="10%">単価</th>
+                                <th width="10%">小計</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -108,6 +109,7 @@
                                     <td>{!! nl2br(e(Str::limit($data->name, 100))) !!}</td>
                                     <td>{{ $data->num }}</td>
                                     <td class="unit_price">{{ $data->unit_price }}</td>
+                                    <td class="unit_price">{{ $data->formatted_price }}</td>
                                     <td>
                                         <p><a
                                                 href="{{ action('Admin\HouseholdAccountBookController@edit', ['id' => $data->id]) }}">編集</a>

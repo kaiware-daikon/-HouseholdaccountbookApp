@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class HouseholdAccountBook extends Model
 {
+    const UNIT_YEN = "円";
+
     protected $guarded = array('id');
     protected $dates = ['payment_date'];
 
@@ -20,4 +22,8 @@ class HouseholdAccountBook extends Model
         return $this->unit_price * $this->num;
     }
 
+    public function getFormattedPriceAttribute(): string
+    {
+        return number_format($this->price) . self::UNIT_YEN;
+    }
 }
