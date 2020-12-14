@@ -19,6 +19,7 @@ class HouseholdAccountBookController extends Controller
         $this->validate($request, HouseholdAccountBook::$rules);
 
         $householdaccountbook = new HouseholdAccountBook;
+        $register = $request->input('register');
 
         $form = $request->all();
 
@@ -27,6 +28,9 @@ class HouseholdAccountBookController extends Controller
         $householdaccountbook->fill($form);
         $householdaccountbook->save();
 
+        if ($register === "連続登録") {
+            return redirect()->action('Admin\HouseholdAccountBookController@create');
+        }
         return redirect()->action('Admin\HouseholdAccountBookController@index');
     }
 
