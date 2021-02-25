@@ -23,7 +23,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
         Route::get('/edit', 'Admin\HouseholdAccountBookController@edit');
         Route::post('/edit', 'Admin\HouseholdAccountBookController@update');
         Route::get('/delete', 'Admin\HouseholdAccountBookController@delete');
-        Route::get('/showChart', 'Admin\HouseholdAccountBookController@showChart');
     });
 });
 

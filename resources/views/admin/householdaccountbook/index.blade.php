@@ -68,9 +68,6 @@
                         </div>
                     </form>
                 </div>
-                <div class="col-md-4">
-                    <p><a href="{{ action('Admin\HouseholdAccountBookController@showChart') }}">グラフ</a></p>
-                </div>
                 <div class="card" style="width: 12rem;">
                     <div class="card-header">今月の合計金額</div>
                     <ul class="list-group list-group-flush">
