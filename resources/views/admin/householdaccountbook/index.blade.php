@@ -71,9 +71,15 @@
                 <div class="card" style="width: 12rem;">
                     <div class="card-header">今月の合計金額</div>
                     <ul class="list-group list-group-flush">
+                        @if (!empty($totalPrice))
                         <li class="list-group-item">
                             {{ $totalPrice }}円
                         </li>
+                        @else
+                        <li class="list-group-item">
+
+                        </li>
+                        @endif
                     </ul>
                 </div>
             </div>
@@ -93,7 +99,8 @@
                                 <th width="10%">小計</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody> 
+                            @if (!empty($householdaccountbook))
                             @foreach ($householdaccountbook as $data)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
@@ -117,6 +124,7 @@
                                     </td>
                                 </tr>
                             @endforeach
+                            @endif
                         </tbody>
                     </table>
                 </div>
