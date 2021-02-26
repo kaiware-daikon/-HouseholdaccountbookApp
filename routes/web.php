@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('admin/householdaccountbook/index');
 });
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
