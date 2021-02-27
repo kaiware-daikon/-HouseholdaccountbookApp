@@ -38,21 +38,17 @@ class HouseholdAccountBookController extends Controller
     {
         $selectAccount = $request->select_account;
         $month = $request->select_month ?? Carbon::now()->month;
-        // $month = isset($selectMonth) ? $selectMonth : Carbon::now()->month;
 
         if (!empty($selectAccount)) {
             $householdaccountbook = HouseholdAccountBook::where('account', $selectAccount)->whereMonth('payment_date', $month)->orderBy('payment_date')->get();
         } else {
             $householdaccountbook = HouseholdAccountBook::whereMonth('payment_date', $month)->orderBy('payment_date')->get();
         }
-        // $householdaccountbook = HouseholdAccountBook::whereMonth('payment_date', $month)->orderBy('payment_date')->get();
 
         $totalPrice = 0;
         foreach ($householdaccountbook as $data) {
             $totalPrice += $data->price;
         }
-        // compact('posts', 'totalPrice') と ['posts' => $posts, 'totalPrice' => $totalPrice]
-        // は同じ
         return view('admin.householdaccountbook.index', compact('householdaccountbook', 'totalPrice', 'selectAccount'));
     }
 
