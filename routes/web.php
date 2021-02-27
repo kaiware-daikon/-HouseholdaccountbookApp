@@ -30,4 +30,4 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-// Route::get('/', 'Admin\HouseholdAccountBookController@index');
+Route::get('/', 'Admin\HouseholdAccountBookController@index');
