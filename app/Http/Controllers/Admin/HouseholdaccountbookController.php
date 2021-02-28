@@ -86,9 +86,4 @@ class HouseholdAccountBookController extends Controller
         return redirect()->action('Admin\HouseholdAccountBookController@index');
     }
 
-    public function showChart(Request $request)
-    {
-
-        return view('admin.householdaccountbook.chart');
-    }
 }
