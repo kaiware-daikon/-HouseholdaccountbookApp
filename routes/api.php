@@ -13,4 +13,4 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', 'MyController@user');
+Route::middleware('auth:api')->get('/user', 'App\Models\User $user');
