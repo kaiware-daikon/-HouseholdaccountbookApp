@@ -73,7 +73,7 @@
                     <ul class="list-group list-group-flush">
                         @if (!empty($totalPrice))
                         <li class="list-group-item">
-                            {{ $totalPrice }}円
+                            {{ number_format($totalPrice) }}円
                         </li>
                         @else
                         <li class="list-group-item">
