@@ -68,20 +68,30 @@
                         </div>
                     </form>
                 </div>
-                <div class="card" style="width: 12rem;">
-                    <div class="card-header">今月の合計金額</div>
-                    <ul class="list-group list-group-flush">
-                        @if (!empty($totalPrice))
-                        <li class="list-group-item">
-                            {{ number_format($totalPrice) }}円
-                        </li>
-                        @else
-                        <li class="list-group-item">
 
-                        </li>
-                        @endif
-                    </ul>
+                @if (!empty($totalPrice))
+                <div class="container">
+                    <div class="d-flex flex-row-reverse bd-highlight">
+                        <div class="card center">
+                            <div class="card-header">今月の合計金額</div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    {{ number_format($totalPrice) }}円
+                                </li>
+                            </ul>
+                        </div>
+                @endif
+                @if (!empty($totalPrice))
+                    <div class="card center">
+                        <div class="card-header">合計金額が一番高い項目とその平均額</div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                {{ $mostExpensiveAccount }} - {{ number_format($mostExpensiveAccountAveragePrice) }}円
+                            </li>
+                        </ul>
+                    </div>
                 </div>
+                @endif
             </div>
         </div>
         <div class="row">

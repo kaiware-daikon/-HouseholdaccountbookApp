@@ -51,21 +51,21 @@ h2 {
     margin-bottom: 30px;
 }
 
-.card {
-    text-align: right;
-    margin-left: 80%;
-    margin-bottom: 24px;
-    color: #fff;
-}
-
 .card li {
     color: #111;
+    text-align: center;
 }
 
 .card-header {
     background-color: #17a2b8;
     opacity: 0.8;
     text-align: center;
+    color: #fff;
+}
+
+.card center {
+    text-align: center;
+    color: #fff;
 }
 
 .btn {
@@ -79,8 +79,4 @@ h2 {
 .table th,
 .table td {
     border: solid 1px 0 #dee2e6;
-}
-
-.chartWrapper {
-    width: 60%;
 }
