@@ -40,7 +40,8 @@ class HouseholdAccountBookController extends Controller
         $month = $request->select_month ?? Carbon::now()->month;
 
         if (!empty($selectAccount)) {
-            $householdaccountbook = HouseholdAccountBook::where('account', $selectAccount)->whereMonth('payment_date', $month)->orderBy('payment_date')->get();
+            $householdaccountbook = HouseholdAccountBook::where('account', $selectAccount)
+            ->whereMonth('payment_date', $month)->orderBy('payment_date')->get();
         } else {
             $householdaccountbook = HouseholdAccountBook::whereMonth('payment_date', $month)->orderBy('payment_date')->get();
         }
@@ -49,7 +50,30 @@ class HouseholdAccountBookController extends Controller
         foreach ($householdaccountbook as $data) {
             $totalPrice += $data->price;
         }
-        return view('admin.householdaccountbook.index', compact('householdaccountbook', 'totalPrice', 'selectAccount'));
+
+        if (!$householdaccountbook->isEmpty()) {
+            $accountEachTotalPrices = [];
+            $accountEachRegisterNum = [];
+            foreach ($householdaccountbook as $data) {
+                if (isset($accountEachTotalPrices[$data->account])) {
+                    $accountEachTotalPrices[$data->account] += $data->price;
+                    $accountEachRegisterNum[$data->account]++; 
+                } else {
+                    $accountEachTotalPrices[$data->account] = 0;
+                    $accountEachRegisterNum[$data->account] = 0;
+                    $accountEachTotalPrices[$data->account] += $data->price;
+                    $accountEachRegisterNum[$data->account]++; 
+                }
+            }
+            arsort($accountEachTotalPrices);
+            $mostExpensiveAccount = array_key_first($accountEachTotalPrices);
+            $mostExpensiveAccountAveragePrice = ceil($accountEachTotalPrices[$mostExpensiveAccount] / $accountEachRegisterNum[$mostExpensiveAccount]);
+        } else {
+            $mostExpensiveAccount = NULL;
+            $mostExpensiveAccountAveragePrice = NULL;
+        }
+
+        return view('admin.householdaccountbook.index', compact('householdaccountbook', 'totalPrice', 'selectAccount', 'mostExpensiveAccount', 'mostExpensiveAccountAveragePrice'));
     }
 
     public function edit(Request $request)
